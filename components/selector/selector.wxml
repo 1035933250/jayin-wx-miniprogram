@@ -12,7 +12,7 @@
       <view class="__sure-btn__" wx:if="{{multiple}}" 
           style="{{sureBtnStyle}}" bindtap="changeSelect">{{sureText}}</view>
     </view>
-    <view class="__selector-options-container__" style="height: calc((0.9rem + 64rpx) * {{maxItem}})">
+    <view class="__selector-options-container__" style="height: calc(4rpx + (0.9rem + 60rpx) * {{maxItem}})">
       <!-- 默认空显示 -->
       <view wx:if="{{selector.arrayIsEmpty(optionsData)}}">
         <view class="__selector-options__ option-class">暂无选项</view>
