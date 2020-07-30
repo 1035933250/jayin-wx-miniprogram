@@ -1,30 +1,30 @@
 <wxs src="./selector.wxs" module="selector"></wxs>
 
-<cover-view class="__selector__" hidden="{{!_show}}">
-  <cover-view class="__selector-mask__" style="background: {{maskBackground}}; opacity: 0;"
-      bindtap="closeSelector"></cover-view>
-  <cover-view class="__selector-container__" 
+<view class="__selector__" hidden="{{!_show}}">
+  <view class="__selector-mask__" style="background: {{maskBackground}}; opacity: 0;"
+      bindtap="closeSelector"></view>
+  <view class="__selector-container__" 
       style="{{containerStyle}}">
-    <cover-view class="__selector-header__">
-      <cover-view class="__cancel-btn__" wx:if="{{multiple}}" 
-          style="{{cancelBtnStyle}}" bindtap="closeSelector">{{cancelText}}</cover-view>
-      <cover-view class="__title__" style="{{selectorTitleStyle}}">{{title}}</cover-view>
-      <cover-view class="__sure-btn__" wx:if="{{multiple}}" 
-          style="{{sureBtnStyle}}" bindtap="changeSelect">{{sureText}}</cover-view>
-    </cover-view>
-    <cover-view class="__selector-options-container__" style="height: calc((0.9rem + 64rpx) * {{maxItem}})">
+    <view class="__selector-header__">
+      <view class="__cancel-btn__" wx:if="{{multiple}}" 
+          style="{{cancelBtnStyle}}" bindtap="closeSelector">{{cancelText}}</view>
+      <view class="__title__" style="{{selectorTitleStyle}}">{{title}}</view>
+      <view class="__sure-btn__" wx:if="{{multiple}}" 
+          style="{{sureBtnStyle}}" bindtap="changeSelect">{{sureText}}</view>
+    </view>
+    <view class="__selector-options-container__" style="height: calc((0.9rem + 64rpx) * {{maxItem}})">
       <!-- 默认空显示 -->
-      <cover-view wx:if="{{selector.arrayIsEmpty(optionsData)}}">
-        <cover-view class="__selector-options__ option-class">暂无选项</cover-view>
-      </cover-view>
-      <cover-view wx:if="{{!selector.arrayIsEmpty(optionsData)}}" 
+      <view wx:if="{{selector.arrayIsEmpty(optionsData)}}">
+        <view class="__selector-options__ option-class">暂无选项</view>
+      </view>
+      <view wx:if="{{!selector.arrayIsEmpty(optionsData)}}" 
           wx:for="{{optionsData}}" wx:key="index" wx:for-item="option"
           data-index="{{index}}"
           class="__selector-options__ {{selector.isSelect(option, value, _selectValue, multiple) ? '__active-selector-option__' : ''}}" 
           style="{{selector.optionStyle(option, value, _selectValue, multiple, optionStyle, selectOptionStyle)}}"
           bindtap="selectOption"
       >{{selector.optionText(option, key)}}
-      </cover-view>
-    </cover-view>
-  </cover-view>
-</cover-view>
+      </view>
+    </view>
+  </view>
+</view>
