@@ -1,0 +1,73 @@
+.__selector__ {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 8000;
+}
+.__selector__ .__selector-mask__ {
+  position: absolute;
+  width: 100vw;
+  top: 0;
+  bottom: 0;
+  z-index: 9000;
+}
+
+.__selector-container__ {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  border-radius: 10rpx 10rpx 0 0;
+  padding-bottom: 20rpx;
+  background: white;
+}
+
+.__selector-header__ {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 30rpx 45rpx 20rpx;
+  font-size: 0.9rem;
+}
+.__cancel-btn__, .__sure-btn__, .__title__  {
+  line-height: 1.3rem;
+}
+
+/* 取消按钮默认样式 */
+.__cancel-btn__ { 
+  color: black;
+}
+/* 确认按钮默认样式 */
+.__sure-btn__ { 
+  color: rgb(7, 193, 96);
+}
+
+/* 标题默认样式 */
+.__title__ { 
+  text-align: center !important;
+  flex-grow: 1 !important;
+  color: rgb(169, 169, 169);
+}
+
+.__selector-options-container__ {
+  padding: 0 40rpx;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.__selector-options__ {
+  padding: 30rpx 0;
+  text-align: center;
+  font-size: 0.9rem !important;
+  color: gray;
+  white-space: nowrap;
+}
+.__active-selector-option__ {
+  color: rgb(7, 193, 96);
+  border: solid rgba(169, 169, 169, 0.3);
+  border-width: 2rpx 0px !important;
+}

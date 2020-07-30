@@ -1,0 +1,75 @@
+var optionText = function (option, keyName) {
+  return optionField(option, keyName, "text");
+}
+
+var optionValue = function (option, valueName) {
+  return optionField(option, valueName, "value");
+}
+
+/**
+ * 选择项类名
+ */
+var optionStyle = function (option, value, selectValue, multiple, optionStyle, selectOptionStyle) {
+  return optionStyle + (isSelect(option, value, selectValue, multiple) ? selectOptionStyle : "");
+}
+
+/**
+ * 当前选择项是否选中
+ * @param option 
+ * @param valueName 
+ * @param selectValue 
+ * @param multiple 
+ */
+var isSelect = function (option, valueName, selectValue, multiple) {
+  if (selectValue == null) return false;
+  var value = optionValue(option, valueName);
+  if (typeof selectValue != "object" || selectValue.length == null) { // 单元素选中
+    return value == selectValue;
+  } else { // 数组
+    if (selectValue.length == 0) return false;
+    if (!multiple) { // 单选默认取第一个元素
+      return value == selectValue[0];
+    }
+    for (var i = 0; i < selectValue.length; i++) {
+      if (value == selectValue[i]) return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * 获取选项中对应的属性值
+ * @param option 
+ * @param field 
+ * @param defaultField 
+ */
+var optionField = function (option, field, defaultField) {
+  if (option == null) return "";
+  if (typeof option != 'object') return option;
+  var v = field == null ? option[defaultField] : option[field];
+  return nullOfDefault(v, "");
+}
+
+/**
+ * 数组是否为空
+ * @param array 
+ */
+var arrayIsEmpty = function (array) {
+  if (array == null) return true;
+  if (array.length == null) {
+    throw "非数组对象";
+  }
+  return array.length <= 0;
+}
+
+var nullOfDefault = function (obj, defaultV) {
+  return obj != null ? obj : defaultV;
+}
+
+module.exports = {
+  optionText: optionText,
+  optionValue: optionValue,
+  arrayIsEmpty: arrayIsEmpty,
+  optionStyle: optionStyle,
+  isSelect: isSelect
+}
