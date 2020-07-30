@@ -63,7 +63,7 @@ Component({
     sureBtnStyle: {type: String, value: ""},
     /** 选择项 */
     optionStyle: {type: String, value: ""},
-    /** 选择项 */
+    /** 已选项 */
     selectOptionStyle: {type: String, value: ""},
   },
   data: {
