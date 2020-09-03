@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "j-scroll-view": "../../components/scroll-view/index"
+  }
+}

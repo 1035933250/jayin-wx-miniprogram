@@ -1,0 +1,9 @@
+.container .content {
+  height: 100vh;
+}
+
+.search-btn {
+  margin: 0 10rpx !important;
+  padding: 0 40rpx !important;
+  border-radius: 10rpx;
+}

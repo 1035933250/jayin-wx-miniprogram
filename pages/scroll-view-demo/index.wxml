@@ -1,0 +1,9 @@
+<view class="container">
+  <j-scroll-view class="content" top-color="gray" bindrefresh="refreshPage" bindlowerload="loadNextPage">
+    <view slot="content">
+      <view class="collocation-container">
+        <view wx:for="{{pp}}" wx:key="index">{{item}}</view>
+      </view>
+    </view>
+  </j-scroll-view>
+</view>

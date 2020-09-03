@@ -1,0 +1,51 @@
+.__refresh-view-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: top ease-in-out 0.3s;
+  overflow: hidden;
+}
+
+.__content-container {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  position: absolute;
+}
+
+.__refresh-anim-container, .__lower-loading-container {
+  color: gray;
+  font-size: 0.8rem;
+}
+.__refresh-anim-container {
+  padding: 50rpx 0;
+}
+.__refresh-prompt {
+  height: 150rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.__lower-loading-container {
+  padding: 30rpx 0;
+}
+.__lower-loading-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.__to-top {
+  position: fixed;
+  right: 30rpx;
+  bottom: 50rpx;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.__to-top .__top-icon {
+  width: 100%; height: 100%;
+  position: relative;
+  left: -100%;
+}

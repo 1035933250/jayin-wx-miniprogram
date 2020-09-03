@@ -1,0 +1,35 @@
+<wxs src="./index.wxs" module="rv" />
+
+<view class="__refresh-view-container">
+  <scroll-view class="__content-container" scroll-with-animation="{{scrollWithAnimation}}"
+      scroll-y scroll-top="{{currentTop}}"
+      bindscroll="scrollToShowRefresh" bindscrolltolower="lowerLoad">
+    <!-- 刷新动画容器 -->
+    <view class="__refresh-anim-container refresh-anim-class" style="{{rv.refreshAnimContainerPosition(refresherHeight)}}; {{!refresherTriggered ?'visibility: hidden;' :  ''}}">
+      <view wx:if="{{!useRefresherSlot}}">
+        <view class="__refresh-prompt refresh-prompt-class">
+          <text>{{refreshText}}</text>
+        </view>
+      </view>
+      <slot wx:else name="toupper-refresh"></slot>
+    </view>
+    <!-- 容器实际内容 -->
+    <view class="__content">
+      <slot name="content"></slot>
+    </view>
+    <!-- 底部加载容器 -->
+    <view class="__lower-loading-container lower-loading-class">
+      <view wx:if="{{!useLowerLoadingSlot}}">
+        <view class="__lower-loading-text lower-loading-text-class">
+          <text>{{lowerLoadingText}}</text>
+        </view>
+      </view>
+      <slot wx:else name="tolower-loading"></slot>
+    </view>
+  </scroll-view>
+  <!-- 返回顶部 -->
+  <view wx:if="{{showTopHoverButton}}" class="__to-top to-top-class" bindtap="scrollToTop" style="display: {{showTop ? 'block' : 'none'}}">
+    <image wx:if="{{!useTopSlot}}" class="__top-icon" style="filter: drop-shadow(80rpx 0 {{topColor}});" src="./top-icon.png"></image>
+    <slot wx:else name="top"></slot>
+  </view>
+</view>

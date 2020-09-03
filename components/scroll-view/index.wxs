@@ -1,0 +1,8 @@
+
+var refreshAnimContainerPosition = function (refreshAnimHeight) {
+  return refreshAnimHeight > 0 ? "position: static;" : "position: fixed; top: -100vh;";
+}
+
+module.exports = {
+  refreshAnimContainerPosition: refreshAnimContainerPosition
+}
