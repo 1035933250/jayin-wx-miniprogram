@@ -12,6 +12,9 @@
   overflow: auto;
   position: absolute;
 }
+.__content {
+  min-height: 100%;
+}
 
 .__refresh-anim-container, .__lower-loading-container {
   color: gray;
