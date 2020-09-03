@@ -1,2 +1,5 @@
-# jayin-wx-miniprogram
-微信小程序自定义组件
+请大家多多支持个人开发的小程序：
+
+
+
+![Image text](./images/多宝鱼.jpg)
