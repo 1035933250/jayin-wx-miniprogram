@@ -16,6 +16,7 @@ Component({
     useRefresherSlot: {type: Boolean, value: false}, // 使用自定义的刷新动画
     lowerLoadingText: { type: String, value: "加载中..." }, // 加载中显示文本
     useLowerLoadingSlot: { type: Boolean, value: false }, // 使用自定义底部加载
+    banLowerLoad: { type: Boolean, value: false }, // 禁止底部加载
 
     // 返回顶部按钮
     useTopSlot: { type: Boolean, value: false }, // 使用自定义返回顶部
@@ -102,7 +103,8 @@ Component({
       })
     },
     lowerLoad: function (event) {
-      if (this.data.lowerLoadTriggered) return;
+      console.log(this.data.banLowerLoad)
+      if (this.data.lowerLoadTriggered || this.data.banLowerLoad) return;
       this.setData({
         lowerLoadTriggered: true
       }, () => this.triggerEvent("lowerload", {that: this}) // 触发底部加载
