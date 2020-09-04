@@ -1,30 +1,30 @@
-<wxs src="./index.wxs" module="rv" />
-
 <view class="__refresh-view-container">
-  <scroll-view class="__content-container" scroll-with-animation="{{scrollWithAnimation}}"
+  <scroll-view class="__content-container" scroll-with-animation
       scroll-y scroll-top="{{currentTop}}"
       bindscroll="scrollToShowRefresh" bindscrolltolower="lowerLoad">
-    <!-- 刷新动画容器 -->
-    <view class="__refresh-anim-container refresh-anim-class" style="{{rv.refreshAnimContainerPosition(refresherHeight)}}; {{!refresherTriggered ?'visibility: hidden;' :  ''}}">
-      <view wx:if="{{!useRefresherSlot}}">
-        <view class="__refresh-prompt refresh-prompt-class">
-          <text>{{refreshText}}</text>
+    <view style="min-height: calc(100% + {{refresherHeight}}px);">
+      <!-- 刷新动画容器 -->
+      <view class="__refresh-anim-container refresh-anim-class" style="{{!refresherTriggered ?'visibility: hidden;' :  ''}}">
+        <view wx:if="{{!useRefresherSlot}}">
+          <view class="__refresh-prompt refresh-prompt-class">
+            <text>{{refreshText}}</text>
+          </view>
         </view>
+        <slot wx:else name="toupper-refresh"></slot>
       </view>
-      <slot wx:else name="toupper-refresh"></slot>
-    </view>
-    <!-- 容器实际内容 -->
-    <view class="__content">
-      <slot name="content"></slot>
-    </view>
-    <!-- 底部加载容器 -->
-    <view class="__lower-loading-container lower-loading-class">
-      <view wx:if="{{!useLowerLoadingSlot}}">
-        <view class="__lower-loading-text lower-loading-text-class">
-          <text>{{lowerLoadingText}}</text>
+      <!-- 容器实际内容 -->
+      <view class="__content">
+        <slot name="content"></slot>
+      </view>
+      <!-- 底部加载容器，在初始化完成后才显示 -->
+      <view wx:if="{{isInit}}" class="__lower-loading-container lower-loading-class">
+        <view wx:if="{{!useLowerLoadingSlot}}">
+          <view class="__lower-loading-text lower-loading-text-class">
+            <text>{{lowerLoadingText}}</text>
+          </view>
         </view>
+        <slot wx:else name="tolower-loading"></slot>
       </view>
-      <slot wx:else name="tolower-loading"></slot>
     </view>
   </scroll-view>
   <!-- 返回顶部 -->
