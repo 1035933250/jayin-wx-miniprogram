@@ -1,5 +1,5 @@
 let scrollIsZero = false, // 是否滚动到顶部，控制只有顶部才可以触发刷新事件
-    toZeroTimestamp = 0, timestampInterval = 500; // 是否处于
+    toZeroTimestamp = 0, timestampInterval = 500; // 记录到达顶部的时间戳，确保隔段时间后才触发
 Component({
   options: {
     multipleSlots: true, // 多插槽
@@ -55,8 +55,9 @@ Component({
         if (this.scrollEndTimer) clearTimeout(this.scrollEndTimer);
       }
       
-      /** 如果还未到0点并且不是刷新状态时设置0点状态并返回 或者 处于底部加载状态 */
-      if (!scrollIsZero && !this.data.refresherTriggered || this.data.lowerLoadTriggered) {
+      /** 如果还未到0点并且不是刷新状态时设置0点状态并返回 或者 处于底部加载状态 又或者还未超过有效时间内 */
+      if (!scrollIsZero && !this.data.refresherTriggered || this.data.lowerLoadTriggered
+          || event.timeStamp - toZeroTimestamp < timestampInterval) {
         this.scrollToTop(event);
         return;
       }
@@ -68,7 +69,6 @@ Component({
         return;
       }
 
-      if (event.timeStamp - toZeroTimestamp < timestampInterval) return;
       // 记录并探测活动结束
       let _this =this;
       if (this.scrollEndTimer) {
@@ -103,7 +103,6 @@ Component({
       })
     },
     lowerLoad: function (event) {
-      console.log(this.data.banLowerLoad)
       if (this.data.lowerLoadTriggered || this.data.banLowerLoad) return;
       this.setData({
         lowerLoadTriggered: true
