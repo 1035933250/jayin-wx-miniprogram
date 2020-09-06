@@ -50,15 +50,7 @@
 
 ## showTopHoverButton
 
-是否显示返回顶部悬浮按钮
-
-## topColor
-
-默认时悬浮按钮颜色
-
-## useTopSlot
-
-修复按钮内容是否使用插槽
+是否显示返回顶部悬浮按钮，需要使用插槽【top】实现图标按钮
 
 ## minShowTopHeight
 
