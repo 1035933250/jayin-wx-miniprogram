@@ -19,8 +19,6 @@ Component({
     banLowerLoad: { type: Boolean, value: false }, // 禁止底部加载
 
     // 返回顶部按钮
-    useTopSlot: { type: Boolean, value: false }, // 使用自定义返回顶部
-    topColor: { type: String, value: 'inherit' }, // 返回顶部颜色
     showTopHoverButton: { type: Boolean, value: true }, // 是否显示悬浮按钮
     minShowTopHeight: { type: Number, value: 200 }, // 最小显示返回顶部按钮的高度
   },

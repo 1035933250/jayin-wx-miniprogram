@@ -4,13 +4,13 @@
       bindscroll="scrollToShowRefresh" bindscrolltolower="lowerLoad">
     <view style="min-height: calc(100% + {{refresherHeight}}px);">
       <!-- 刷新动画容器 -->
-      <view class="__refresh-anim-container refresh-anim-class" style="{{!refresherTriggered ?'visibility: hidden;' :  ''}}">
+      <view class="__refresh-anim-container refresh-anim-class">
         <view wx:if="{{!useRefresherSlot}}">
-          <view class="__refresh-prompt refresh-prompt-class">
+          <view class="__refresh-prompt refresh-prompt-class" style="{{!refresherTriggered ?'visibility: hidden;' :  ''}}">
             <text>{{refreshText}}</text>
           </view>
         </view>
-        <slot wx:else name="toupper-refresh"></slot>
+        <slot wx:else name="toupper-refresh" style="{{!refresherTriggered ?'visibility: hidden;' :  ''}}"></slot>
       </view>
       <!-- 容器实际内容 -->
       <view class="__content">
@@ -29,7 +29,6 @@
   </scroll-view>
   <!-- 返回顶部 -->
   <view wx:if="{{showTopHoverButton}}" class="__to-top to-top-class" bindtap="scrollToTop" style="display: {{showTop ? 'block' : 'none'}}">
-    <image wx:if="{{!useTopSlot}}" class="__top-icon" style="filter: drop-shadow(80rpx 0 {{topColor}});" src="./top-icon.png"></image>
-    <slot wx:else name="top"></slot>
+    <slot name="top"></slot>
   </view>
 </view>
